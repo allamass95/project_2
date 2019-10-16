@@ -1,4 +1,5 @@
 import pandas as pd
+<<<<<<< HEAD
 from sqlalchemy import create_engine
 from flask import Flask, jsonify, render_template
 
@@ -37,3 +38,10 @@ def census(year=2011):
 
 if __name__ == "__main__":
     app.run(debug=True)
+=======
+from flask import (Flask,render_template,jsonify)
+from flask_sqlalchemy import SQLAlchemy
+
+
+
+>>>>>>> 163d110a67a139b45cbd83f77354bbbb296d7c78

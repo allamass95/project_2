@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    
+
+        <link rel="stylesheet" href="static/css/d3Style.css">
+
+    
+
+        <link rel="stylesheet"
+
+            href="https://fonts.googleapis.com/css?family=Oswald:100,100i,300,300i,400,400i,700,700i,900,900i">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+
+            rel="stylesheet">
+
+      
+
+        <script src="static/js/d3.v5.min.js"></script>
+
+        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+
+            integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+
+            crossorigin=""></script>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+
+            integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+
+            crossorigin="" />
+
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+        <link rel="stylesheet" href="static/css/style.css">
+
+
+
+    <title>State Legislature Partisan</title>
+
+    
+
+</head>
+
+
+
+<body>
+
+
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="#"><img class="logo-main-inverted" src="static/icons/Repub-Dem-wide.png">State Legislature Partsian</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#map">MAP</a>
+
+                    </li>
+
+                  
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#scatter">PARTY</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#pick_three">YEAR</a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                            <a class="nav-link" href="#resources">RESOURCES</a>
+
+                        </li>
+
+                    <li>
+
+                        <a target="#_blank" href="https://github.com/allamass95/project_2" style="padding-left:20px;">
+
+                            <img width="25px" src="static/icons/mark-github-32">
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <header class="main-banner text-center text-white">
+
+        <div class="main-banner-content">
+
+            <div class="container">
+
+                <h1 class="main-banner-heading mb-0">Lagislative Partsian Composition</h1>
+
+                <h2 class="main-banner-subheading mb-0">A Look at Lagislative Partsian of Each State</h2>
+
+                <!-- <a href="#map" class="btn btn-primary btn-xl mt-5">Get Started</a> -->
+
+            </div>
+
+        </div>
+
+
+
+    </header>
+
+
+
+    <section class="section_2">
+
+        <div class="container level-1">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-4 order-lg-1">
+
+                    <div class="p-5">
+
+                        <h2 class="display-1">Majority control over state Legislature</h2>
+
+                        <hr class="header-bar">
+
+                        <p class="display-1">Using the interactive map, look at the majority control over legislature of each state by republican or democratic party. 
+
+                                This can be observed for the years 2011-2018. This data is based on the legislative government of each state which is made up of house and senate for the state.</p>
+
+                        <!-- <select id="map_metric" class="minimal" onChange="changemapMetric(this)">
+
+                            <option value="war" id="map-sport-selected" selected>Poverty</option>
+
+                            <option value="per">Income</option>
+
+                            <option value="av">Rent</option>
+
+                        </select> -->
+
+                        <select id="map_year" class="minimal">
+
+                            <option value="2011">2011</option>
+
+                            <option value="2012">2012</option>
+
+                            <option value="2013">2013</option>
+
+                            <option value="2014">2014</option>
+
+                            <option value="2015">2015</option>
+
+                            <option value="2016">2016</option>
+
+                            <option value="2017">2017</option>
+
+                            <option value="2018" id="map-year-selected" selected>2018</option>
+
+                        </select>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-8 order-lg-2" id="map-container">
+
+                    <div id="map"></div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- <hr> -->
+
+
+
+    <!-- <section class="section_2">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-4 order-lg-1">
+
+                    <div class="p-5">
+
+                        <h2 class="display-1">Fast Facts</h2>
+
+                        <hr class="header-bar">
+
+
+
+                        <p class="display-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid,
+
+                            mollitia odio veniam
+
+                            sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione
+
+                            voluptatum molestiae adipisci, beatae obcaecati.</p>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-8 order-lg-2">
+
+                    <div class="p-5">
+
+                 
+
+    
+
+                                  <div class="grid-container">
+
+                                        <div class="grid_selector"><select id="sport_fast_facts" class="minimal">
+
+                                                <option value="sport_nfl" id="state-selected" selected>MLB</option>
+
+                                                <option value="sport_nba">NBA</option>
+
+                                                <option value="sport_nfl">NFL</option>
+
+                                            </select><select id="state_fast_facts" class="minimal">
+
+                                                <option value="state_1" id="state-selected" selected>State_1</option>
+
+                                                <option value="state_2">State_2</option>
+
+                                                <option value="state_3">State_3</option>
+
+                                            </select></div>
+
+                                        <div class="home_text">As a home state</div>
+
+                                        <div class="college_text">As a college state</div>
+
+                                        <div class="home_money bold-metric">$3465</div>
+
+                                        <div class="college_money bold-metric">$3465</div>
+
+                                        <div class="home_text_2">and an average performance of</div>
+
+                                        <div class="college_text_2">and an average performance of</div>
+
+                                        <div class="home_perf bold-metric">2.3</div>
+
+                                        <div class="college_perf bold-metric">2.3</div>
+
+                                      </div>
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+    </section> -->
+
+    <!-- <hr> -->
+
+    <section class="section_1">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-4">
+
+                    <div class="p-5">
+
+                        <h2 class="display-1">Number of States occupied by Each party</h2>
+
+                        <hr class="header-bar">
+
+
+
+                        <p class="display-1">This data how many states each party occupies by year. 
+
+                                </p>
+
+                        <!-- <select id="sport-inds" class="minimal" onChange="changesportSelection(this)">
+
+                            <option value="mlb" id="sport-selected" selected>Income</option>
+
+                            <option value="nba">Poverty</option>
+
+                            <option value="nfl">Rent</option>
+
+                        </select> -->
+
+                        <select id="year-inds" class="minimal" onChange="changeyearSelection(this)">
+
+                            <option value="2011">2011</option>
+
+                            <option value="2012">2012</option>
+
+                            <option value="2013">2013</option>
+
+                            <option value="2014">2014</option>
+
+                            <option value="2015">2015</option>
+
+                            <option value="2016">2016</option>
+
+                            <option value="2017">2017</option>
+
+                            <option value="2018" id="year-selected" selected>2018</option>
+
+                        </select>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-8">
+
+                    <div id="scatter"></div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- <hr> -->
+
+
+
+    <section class="section_2" id="pick_three">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-4 order-lg-1">
+
+                            <div class="p-5">
+
+                                <h2 class="display-1">Factors affected by each political party</h2>
+
+                                <hr class="header-bar">
+
+
+
+                                <p class="display-1">Use this feature to determine how each of these factors were improved overtime</p>
+
+                                    <select id="sport-picker" class="minimal" onchange="optionChanged(this.value)"></select>
+
+                            </div>
+
+                        </div>
+
+                        
+
+
+
+ <div class="col-lg-8 order-lg-2">
+
+                                <div class="p-5">
+
+                                        <div class="card-grid-container">
+
+                                                <div class="card-card_1 card" id="mlbcard">Income</div>
+
+                                                <div class="card-card_2 card" id="nbacard">Poverty Rate</div>
+
+                                                <div class="card-card_3 card" id="nflcard">Rent</div>
+
+                                                <!-- <div class="card-card_selector"><select id="sport-picker" class="minimal" onchange="optionChanged(this.value)"></select></div> -->
+
+                                              </div>
+
+
+
+                                        
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+
+                            </div>
+
+                            </div>
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+
+    <section class="section_1" id="resources">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-4 order-lg-1">
+
+                    <div class="p-5">
+
+                        <h2 class="display-1">Want to Dive Deeper?</h2>
+
+                        <hr class="header-bar">
+
+
+
+                        <p class="display-1">Want to see where this data comes from? Check out the sites used to gather all of the data here.</p>
+
+                         
+
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+                <div class="col-lg-8 order-lg-2">
+
+                    <div class="p-5">
+
+                            <!-- <div class="row logos_rows">
+
+                                <div class ="col-sm-6"><a href="https://www.pro-football-reference.com/play-index/psl_finder.cgi?request=1&match=combined&year_min=2009&year_max=2018&season_start=1&season_end=-1&pos%5B%5D=qb&pos%5B%5D=rb&pos%5B%5D=wr&pos%5B%5D=te&pos%5B%5D=e&pos%5B%5D=t&pos%5B%5D=g&pos%5B%5D=c&pos%5B%5D=ol&pos%5B%5D=dt&pos%5B%5D=de&pos%5B%5D=dl&pos%5B%5D=ilb&pos%5B%5D=olb&pos%5B%5D=lb&pos%5B%5D=cb&pos%5B%5D=s&pos%5B%5D=db&pos%5B%5D=k&pos%5B%5D=p&draft_year_min=1936&draft_year_max=2019&draft_slot_min=1&draft_slot_max=500&draft_pick_in_round=pick_overall&conference=any&draft_pos%5B%5D=qb&draft_pos%5B%5D=rb&draft_pos%5B%5D=wr&draft_pos%5B%5D=te&draft_pos%5B%5D=e&draft_pos%5B%5D=t&draft_pos%5B%5D=g&draft_pos%5B%5D=c&draft_pos%5B%5D=ol&draft_pos%5B%5D=dt&draft_pos%5B%5D=de&draft_pos%5B%5D=dl&draft_pos%5B%5D=ilb&draft_pos%5B%5D=olb&draft_pos%5B%5D=lb&draft_pos%5B%5D=cb&draft_pos%5B%5D=s&draft_pos%5B%5D=db&draft_pos%5B%5D=k&draft_pos%5B%5D=p&c1stat=av&c1comp=gt&c5val=1.0&order_by=av"><img class="logo_resources" src="static/icons/pfr-logo.png"></img></a></div>
+
+                                <div class ="col-sm-6"><a href="http://www.espn.com/mlb/attendance"><img class="logo_resources" src="static/icons/espn_logo.png"></img></a></div>
+
+
+
+
+
+                            </div>
+
+                            <div class="row lgoos_rows">
+
+   
+
+                                    <div class ="col-sm-6"><a href="https://www.baseball-reference.com/"><img class="logo_resources" src="static/icons/bb-ref_logo.png"></img></a></div>
+
+                                    <div class ="col-sm-6"><a href="https://www.spotrac.com/mlb/rankings/"><img class="logo_resources" src="static/icons/spottrac_logo.png"></a></img></div>
+
+
+
+                                </div>
+
+                                <div class="row logos_rows">
+
+                                        <div class ="col-sm-6"><a href="https://www.basketball-reference.com/play-index/tiny.fcgi?id=DdD3l"><img class="logo_resources" src="static/icons/bbr-logo.png"></img></a></div>
+
+                                        <div class ="col-sm-6"><a href="https://en.wikipedia.org/wiki/List_of_World_Series_champions"><img class="logo_resources" src="static/icons/wikipedia_logo.png"></img></a></div>
+
+
+
+                                    </div> -->
+
+
+
+                                    <!-- <article class="logo_containers">
+
+                                            <span></span><img class="logo"  src="static/icons/pfr-logo.png" alt="pro-football-logo" />
+
+                                        </article>
+
+                                        
+
+                                        <article class="logo_containers">
+
+                                            <span></span><img class="logo-inverted" src="static/icons/espn_logo.png" alt="espn-logo" />
+
+                                        </article>
+
+                                        
+
+                                        <article class="logo_containers">
+
+                                            <span></span><img class="logo"  src="static/icons/bb-ref_logo.png" alt="baseball-reference-logo" />
+
+                                        </article>
+
+                                        <article class="logo_containers">
+
+                                                <span></span><img class="logo-inverted"  src="static/icons/spottrac_logo.png" alt="spottrac-logo" />
+
+                                            </article>
+
+                                            <article class="logo_containers">
+
+                                                    <span></span><img class="logo"  src="static/icons/bbr-logo.png" alt="basketball-reference-logo" />
+
+                                                </article>
+
+                                                <article class="logo_containers">
+
+                                                        <span></span><img  class="logo" src="static/icons/wikipedia_logo.png" alt="wikipedia-logo" />
+
+                                                    </article> -->
+
+                                                  
+
+                    </div>
+
+                
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    
+
+    </section>
+
+    <!-- <hr> -->
+
+
+
+    <!-- Footer -->
+
+    <footer class="py-3">
+
+        <div class="container">
+
+
+
+            <p class="m-0 text-center text-black small">Mohammad Shiwani, Alejandro Llamas, Emanuel Llamas
+
+            </p>
+
+            <p class="m-0 text-center text-black small">Rice University Data Analytics Boot Camp | November 2019</p>
+
+            <img class="logo-main-inverted" src="static/icons/republican-elephant-democrat-donkey.jpg ">
+
+        </div>
+
+        <!-- /.container -->
+
+    </footer>
+
+
+
+   
+
+    <!-- <script src="static/js/chroma.js"></script> -->
+
+    <script src="static/js/config.js"></script>
+
+    <script type="text/javascript" src="static/js/main.js"></script>
+
+    <script src="static/js/choropleth_spend.js"></script>
+
+    <script src="static/js/infographics.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+
+
+
+</body>
+
+
+
+</html>
