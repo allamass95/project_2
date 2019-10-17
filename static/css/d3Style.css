@@ -1,0 +1,457 @@
+.aText {
+
+    font-family: sans-serif;
+  
+    font-size: 16px;
+  
+    text-anchor: middle;
+  
+  }
+  
+  
+  
+  .active {
+  
+    font-weight: bold;
+  
+    fill: #000;
+  
+    transition: fill 0.3s ease-out;
+  
+    text-anchor: middle;
+  
+    text-decoration: underline;
+  
+  }
+  
+  
+  
+  .inactive {
+  
+    font-weight: lighter;
+  
+    fill: #464646;
+  
+    transition: fill 0.3s ease-out;
+  
+    text-anchor: middle;
+  
+  }
+  
+  
+  
+  .inactive:hover {
+  
+    fill: #000;
+  
+    cursor: pointer;
+  
+  }
+  
+  text {
+  
+    font-family: Lato;
+  
+  }
+  
+  
+  
+  #scatter path {
+  
+    stroke: #464646;
+  
+  }
+  
+  #map path {
+  
+    stroke: #fff;
+  
+  }
+  
+  
+  
+  
+  
+  .dotText {
+  
+    font-family: Lato;
+  
+    fill: rgb(163, 243, 249);
+  
+    text-anchor: middle;
+  
+    cursor: default;
+  
+    color:rgb(163, 243, 249);
+  
+    text-transform:uppercase;
+  
+  }
+  
+  
+  
+  .dotCircle {
+  
+    /* fill: #dfec93; */
+  
+    transition: fill .4s ease;
+  
+    stroke: #7b7b7b;
+  
+    r: 5;
+  
+    /* z-index:-1; */
+  
+    /* position: relative; */
+  
+  }
+  
+  .dotCircle:hover {
+  
+    /* fill: #71d0ca; */
+  
+    transition: fill .4s ease;
+  
+    stroke: #000000;
+  
+    r: 8;
+  
+    
+  
+  
+  
+  }
+  
+  
+  
+  .tooltip_logo {
+  
+    width: 3rem;
+  
+  height: auto;
+  
+  padding-right: 1em;
+  
+  margin-bottom: .25em;
+  
+  }
+  
+  
+  
+  .chart {
+  
+    display: block;
+  
+    margin: 0;
+  
+    float:right;
+  
+  }
+  
+  
+  
+  div.d3-tip {
+  
+    position: absolute;
+  
+    padding: 6px;
+  
+    font-size: 0.95rem;
+  
+    font-family: Lato;
+  
+    line-height: 1em;
+  
+    color: rgb(0, 0, 0);
+  
+    text-align: left;
+  
+    text-transform: capitalize;
+  
+    background: rgba(227, 227, 227, 0.8);
+  
+    pointer-events: none;
+  
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  
+  
+  
+  }
+  
+  
+  
+  g text, g line {
+  
+    font-family:Lato;
+  
+    fill: #464646;
+  
+    text-transform:uppercase;
+  
+    font-size:0.95em;
+  
+  
+  
+    /* stroke: #efefef; */
+  
+  
+  
+    /* font-size:100px; */
+  
+  }
+  
+  
+  
+  g.tick line {
+  
+    stroke: #464646;
+  
+  }
+  
+  /* Mobile Rules */
+  
+  @media screen and (max-width: 530px) {
+  
+    .divText {
+  
+      display: none;
+  
+    }
+  
+  
+  
+    .aText {
+  
+      font-size: 12px;
+  
+    }
+  
+  }
+  
+  
+  
+  @media screen and (max-width: 400px) {
+  
+    .aText {
+  
+      font-size: 11px;
+  
+    }
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* LEAFLET */
+  
+  /* remove default margin and padding from body */
+  
+  /* body {
+  
+    padding: 0;
+  
+    margin: 0;
+  
+  } */
+  
+  
+  
+  /* set map, body, and html to 100% of the screen size */
+  
+  /* #map,
+  
+  body,
+  
+  html {
+  
+    height: 100%;
+  
+  } */
+  
+  
+  
+  /* #map {
+  
+    height: 500px;
+  
+    width: 1000px;
+  
+    margin: auto; */
+  
+    /* pointer-events:none; */
+  
+  /* } */
+  
+  /* 
+  
+  h1 {
+  
+    text-align: center;
+  
+  }
+  
+  
+  
+  .info {
+  
+    padding: 6px 8px;
+  
+    font-size: 0.75rem;
+  
+    font-family: Lato;
+  
+    line-height: 1em;
+  
+    color: rgb(0, 0, 0);
+  
+    text-align: left;
+  
+    text-transform: capitalize;
+  
+    background: white;
+  
+    background: rgba(227, 227, 227, 0.8);
+  
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  
+    border-radius: 0px;
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  .info h4 {
+  
+    margin: 0 0 5px;
+  
+    color: #777;
+  
+  }
+  
+  .legend {
+  
+    line-height: 18px;
+  
+    color: 'black';
+  
+  
+  
+  }
+  
+  .legend i {
+  
+    width: 18px;
+  
+    height: 18px;
+  
+    float: left;
+  
+    margin-right: 8px;
+  
+    opacity: 1;
+  
+  } */
+  
+  /* remove default margin and padding from body */
+  
+  body {
+  
+    padding: 0;
+  
+    margin: 0;
+  
+  }
+  
+  
+  
+  /* set map, body, and html to 100% of the screen size */
+  
+  
+  
+  
+  
+  #map {
+  
+    height: 500px;
+  
+    width: 60%;
+  
+    margin: auto;
+  
+    float:right;
+  
+    z-index:3;
+  
+  }
+  
+  
+  
+  h1 {
+  
+    text-align: center;
+  
+  }
+  
+  
+  
+  
+  
+  .info {
+  
+    padding: 6px 8px;
+  
+    font-family:Lato;
+  
+    font: 14px/16px Arial, Helvetica, sans-serif;
+  
+    background: white;
+  
+    background: rgba(255,255,255,0.8);
+  
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  
+    border-radius: 5px;
+  
+  }
+  
+  .info h4 {
+  
+    margin: 0 0 5px;
+  
+    color: #777;
+  
+  }
+  
+  .legend {
+  
+    line-height: 18px;
+  
+    color: 'black';
+  
+  
+  
+  }
+  
+  .legend i {
+  
+    width: 18px;
+  
+    height: 18px;
+  
+    float: left;
+  
+    margin-right: 8px;
+  
+    opacity: 1;
+  
+  }
