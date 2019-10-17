@@ -4,25 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="static/css/style_test.css">
     <title>Document</title>
+    <style>
+            .box {
+            width: 250px;
+            height: 30px;
+            border: 1px solid #999;
+            font-size: 18px;
+            color: #1c87c9;
+            background-color: #eee;
+            border-radius: 5px;
+            box-shadow: 2px 2px 8px #999;;
+            
+            }
+   
+
+        
+                        
+    </style>
+          
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <!-- <h2>Political Trends</h2>
-    <select id="selDataset" onchange="getData(this.value)">
+    <h2></h2>
+    <select class ='box' id="selDataset" onchange="getData(this.value)">
         <option value="dataset1">Median Houshold Income</option>
         <option value="dataset2">Poverty Rate</option>
         <option value="dataset3">Unemployment Rate</option>
-        <option value="dataset3">Median Cost of Rent</option>
-        <option value="dataset3">Black Poverty Rate</option>
-        <option value="dataset3">Hispanic Poverty Rate</option>
-        <option value="dataset3">White Poverty Rate</option>
+        <option value="dataset4">Median Cost of Rent</option>
+        <option value="dataset5">Black Poverty Rate</option>
+        <option value="dataset6">Hispanic Poverty Rate</option>
+        <option value="dataset7">White Poverty Rate</option>
 
-    </select> -->
-
-
+    </select>
 
 
+
+    <dic id='pie'></div>
     <div id="plot"></div>
     <div id="plot2"></div>
     <div id="plot3"></div>
@@ -33,6 +52,7 @@
 
     <script src="static/js/dem_data.js"></script>
     <script src="static/js/rep_data.js"></script>
+    <script src="static/js/split_data.js"></script>
     <script src="static/js/plot.js"></script>
 
 </body>
