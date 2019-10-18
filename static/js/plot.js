@@ -61,7 +61,7 @@ function init() {
       autorange: true,
       type: "linear",
       title:{
-        text:'Income',
+        text:name,
         font:{
           family:'Courier New,monospace',
           size:18,
@@ -106,7 +106,8 @@ function init_two(){
       font: {
         family: 'sans-serif',
         size: 12,
-        color: '#000'
+        color: '#000',
+        bordercolor:'black'
       },
       bgcolor: '#E2E2E2',
       bordercolor: '#FFFFFF',
@@ -152,14 +153,14 @@ function init_three(){
     type: "scatter",
     mode: "lines+markers",
     marker:{
-      color:'black',
+      color:'#DDD011',
       size:8
     },
     name: 'Split',
     x: split_data.map(row=>row["year"]),
     y: split_data.map(row=>row['Median Household Income']),
     line: {
-      color: "grey",
+      color: "#DDD011",
       width:4,
       dash:'dot'
     }
