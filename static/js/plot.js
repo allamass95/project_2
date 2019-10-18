@@ -9,7 +9,7 @@
 //   var X = "\""+ x+  "\""; 
 //   var Y = "\""+ y+  "\"";
 //   document.getElementById(X).setAttribute("id", Y);
-}
+// }
 
 // function plotbyvalue(elementId)
 // {
@@ -183,14 +183,14 @@ function init_three(){
     type: "scatter",
     mode: "lines+markers",
     marker:{
-      color:'black',
+      color:'#DDD011',
       size:8
     },
     name: 'Split',
     x: split_data.map(row=>row["year"]),
     y: split_data.map(row=>row['Median Household Income']),
     line: {
-      color: "grey",
+      color: "#DDD011",
       width:4,
       dash:'dot'
     }
