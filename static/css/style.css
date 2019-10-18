@@ -195,11 +195,13 @@ h1 {
   
     padding-bottom: 7rem;
   
-    background: url('../icons/Background.jpg');
+    background: url('../icons/image_background.png');
+
+    filter: contrast(200%);
   
     background-attachment: fixed;
   
-    background-position: center;
+    background-position: top 20%;
   
     background-repeat: no-repeat;
   
@@ -253,7 +255,7 @@ h1 {
   
   header.main-banner .main-banner-content .main-banner-heading {
   
-    font-size: 3rem
+    font-size: 3rem;
   
   }
   
@@ -287,7 +289,10 @@ h1 {
   
     header.main-banner .main-banner-content .main-banner-heading {
   
-        font-size: 3rem
+        font-size: 3rem;
+
+        color: black;
+
   
     }
   
@@ -295,7 +300,9 @@ h1 {
   
     header.main-banner .main-banner-content .main-banner-subheading {
   
-        font-size: 2rem
+        font-size: 2rem;
+
+        color: black;
   
     }
   
@@ -1057,11 +1064,15 @@ h1 {
   
   .logo-main-inverted {
   
-    /* filter: invert(100%); */
+    filter: invert(0%);
+
+    background: none;
   
     max-width:40px;
   
     margin-right:1.5em;
+
+    background="rgba(0,0,0,0.7);
   
   
   
