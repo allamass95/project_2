@@ -1,45 +1,59 @@
+<<<<<<< HEAD
 import pandas as pd
 from sqlalchemy import create_engine
 from flask import Flask, jsonify, render_template
+=======
+# import pandas as pd
+
+# from sqlalchemy import create_engine
+# from flask import Flask, jsonify, render_template
+>>>>>>> 784e40bf6fecc9d7b6c4af5da671a547c6f1fa0a
 
 
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return render_template("index.html")
-
-
-@app.route("/api/legislators/<year>")
-def ligislator(year=2011):
-    connection_string = "postgres:Riceuniv19!@localhost:5432/project2"
-    engine = create_engine(f'postgresql://{connection_string}')
-    conn = engine.connect()
-    sql = f"select * from legis_{year}"
-    legis_df = pd.read_sql(sql, conn)
-    conn.close()
-    return legis_df.to_json(orient="records")
+# @app.route("/")
+# def home():
+#     return render_template("index.html")
 
 
+# @app.route("/api/legislators/<year>")
+# def ligislator(year=2011):
+#     connection_string = "postgres:Riceuniv19!@localhost:5432/project2"
+#     engine = create_engine(f'postgresql://{connection_string}')
+#     conn = engine.connect()
+#     sql = f"select * from legis_{year}"
+#     legis_df = pd.read_sql(sql, conn)
+#     conn.close()
+#     return legis_df.to_json(orient="records")
 
-@app.route("/api/census/<year>")
-def census(year=2011):
-    connection_string = "postgres:Riceuniv19!@localhost:5432/project2"
-    engine = create_engine(f'postgresql://{connection_string}')
-    conn = engine.connect()
-    sql = f"select * from year_{year}"
-    census_df = pd.read_sql(sql, conn)
-    conn.close()
-    return census_df.to_json(orient="records")
+
+
+# @app.route("/api/census/<year>")
+# def census(year=2011):
+#     connection_string = "postgres:Riceuniv19!@localhost:5432/project2"
+#     engine = create_engine(f'postgresql://{connection_string}')
+#     conn = engine.connect()
+#     sql = f"select * from year_{year}"
+#     census_df = pd.read_sql(sql, conn)
+#     conn.close()
+#     return census_df.to_json(orient="records")
     
 
 
+<<<<<<< HEAD
 if __name__ == "__main__":
     app.run(debug=True)
 <<<<<<< HEAD
 =======
 =======
+=======
+# if __name__ == "__main__":
+#     app.run(debug=True)
+# =======
+import pandas as pd
+>>>>>>> 784e40bf6fecc9d7b6c4af5da671a547c6f1fa0a
 from flask import (Flask,render_template,jsonify)
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
@@ -75,7 +89,7 @@ def split():
     sql_data=f'select * from finalized_split'
     split_df=pd.read_sql(sql_data,conn)
     conn.close()
-    return split.to_json(orient='records')
+    return split_df.to_json(orient='records')
 
 if __name__ =='__main__':
     app.run()

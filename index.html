@@ -364,23 +364,17 @@
 
                         </select> -->
 
-                        <select id="factortype" class="minimal" onChange="plotbyvalue(this)">
+                        <select class ='box' id="selDataset" onchange="getData(this.value)">
 
-                            <option value="plot">Median Household Income</option>
+                            <option value="dataset1">Median Houshold Income</option>
+                            <option value="dataset2">Poverty Rate</option>
+                            <option value="dataset3">Unemployment Rate</option>
+                            <option value="dataset4">Median Cost of Rent</option>
+                            <option value="dataset5">Black Poverty Rate</option>
+                            <option value="dataset6">Hispanic Poverty Rate</option>
+                            <option value="dataset7">White Poverty Rate</option>
 
-                            <option value="plot1">Poverty Rates</option>
-
-                            <option value="plot3">Unemployment Rate</option>
-
-                            <option value="2014">2014</option>
-
-                            <option value="2015">2015</option>
-
-                            <option value="2016">2016</option>
-
-                            <option value="2017">2017</option>
-
-                            <option value="plot" id="value-selected" selected>Median Household Income</option>
+                            <!-- <option value="dataset1" id="value-selected" selected>Median Household Income</option> -->
 
 
                         </select>
@@ -394,8 +388,10 @@
                 <div class="col-lg-8">
 
                     <div id="plotresults">
-                        <div class="plotresult" id="plot"></div>
+                        <div id="pie"></div>
                     </div>
+
+                    <script src="static/js/split_data.js"></script>
                     <script src="static/js/dem_data.js"></script>
                     <script src="static/js/rep_data.js"></script>
                     <script src="static/js/plot.js"></script>
