@@ -92,7 +92,7 @@ function init() {
       autorange: true,
       type: "linear",
       title:{
-        text:'Income',
+        text:name,
         font:{
           family:'Courier New,monospace',
           size:18,
@@ -137,7 +137,8 @@ function init_two(){
       font: {
         family: 'sans-serif',
         size: 12,
-        color: '#000'
+        color: '#000',
+        bordercolor:'black'
       },
       bgcolor: '#E2E2E2',
       bordercolor: '#FFFFFF',
