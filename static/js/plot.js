@@ -1,69 +1,577 @@
-var apiKey = "EZVd-7e6Nxso71r1rtWL";
+// function init() {
+// var trace1 = {
+//       type: "scatter",
+//       mode: "lines+markers",
+//       name: name,
+//       x: dem_data.map(row=>row["year"]),
+//       y: dem_data.map(row=>row['Median Household Income']),
+//       line: {
+//         color: "blue"
+//       }
+//     };
 
-/* global Plotly */
-var url =
-  `https://www.quandl.com/api/v3/datasets/WIKI/AMZN.json?start_date=2016-10-01&end_date=2017-10-01&api_key=${apiKey}`;
+//     var trace2 = {
+//       type: "scatter",
+//       mode: "lines",
+//       name: name,
+//       x: rep_data.map(row=>row["year"]),
+//       y: rep_data.map(row=>row['Median Household Income']),
+//       line: {
+//         color: "red"
+//       }
+//     };
 
-/**
- * Helper function to select stock data
- * Returns an array of values
- * @param {array} rows
- * @param {integer} index
- * index 0 - Date
- * index 1 - Open
- * index 2 - High
- * index 3 - Low
- * index 4 - Close
- * index 5 - Volume
- */
-function unpack(rows, index) {
-  return rows.map(function(row) {
-    return row[index];
-  });
+//     var combined_data = [trace1,trace2];
+
+//     var layout = {
+//       title: `Median HouseHold Income`,
+//       xaxis: {
+//         autorange: true,
+//         type: "date"
+//       },
+//       yaxis: {
+//         autorange: true,
+//         type: "linear"
+//       }
+//     };
+
+//     Plotly.newPlot("plot", combined_data, layout);
+
+function plotbyvalue() {
+  var x = document.getElementsByClassName("plotresult")[0].id; 
+  var y = document.getElementById("factortype").value;
+  var X = "\""+ x+  "\""; 
+  var Y = "\""+ y+  "\"";
+  document.getElementById(X).setAttribute("id", Y);
 }
 
+// function plotbyvalue(elementId)
+// {
 
 
-function buildPlot() {
-  d3.json(url).then(function(data) {
+//   // Adds an element to the document
+  
+  
+//       var p = document.getElementById(plotresults);
+//       var newElement = document.createElement(div);
+//       newElement.setAttribute('id', elementId);
+//       p.appendChild(newElement);
+//   }
+  
+  
+  
+//   function removeElement(elementId) 
+  
+//   {
+  
+//       // Removes an element from the document
+//       var element = document.getElementById(elementId);
+//       element.parentNode.removeChild(element);
+//   }
 
-    // Grab values from the data json object to build the plots
-    var name = data.dataset.name;
-    var stock = data.dataset.dataset_code;
-    var startDate = data.dataset.start_date;
-    var endDate = data.dataset.end_date;
-    var dates = unpack(data.dataset.data, 0);
-    var closingPrices = unpack(data.dataset.data, 1);
-    
+
+
 
     var trace1 = {
       type: "scatter",
-      mode: "lines",
-      name: name,
-      x: dates,
-      y: closingPrices,
+      mode: "lines+markers",
+      marker:{
+        color:'blue',
+        size:8
+      },
+      name: 'Democrat',
+      x: dem_data.map(row=>row["year"]),
+      y: dem_data.map(row=>row['Median Household Income']),
       line: {
-        color: "#17BECF"
+        color: "blue",
+        width: 4,
+        dash:'dashdot'
       }
     };
 
-    var data = [trace1];
+    var trace2 = {
+      type: "scatter",
+      mode: "lines+markers",
+      marker:{
+        color:'red',
+        size:8
+      },
+      name: 'Republican',
+      x: rep_data.map(row=>row["year"]),
+      y: rep_data.map(row=>row['Median Household Income']),
+      line: {
+        color: "red",
+        width:4,
+        dash:'dot'
+      }
+    };
+
+    var combined_data = [trace1,trace2];
 
     var layout = {
-      title: `${stock} closing prices`,
+      title: {
+        text:`Median HouseHold Income`,
+        font:{
+          family:'Arial',
+          size:30,
+          color:'black'
+        }
+    },
       xaxis: {
-        range: [startDate, endDate],
+        autorange: true,
+        type: "date"
+
+        
+      },
+      yaxis: {
+        autorange: true,
+        type: "linear",
+        title:{
+          text:'Income',
+          font:{
+            family:'Courier New,monospace',
+            size:18,
+            color:'black'
+          }
+        }
+      }
+    };
+
+    Plotly.newPlot("plot", combined_data, layout);
+
+
+
+
+
+
+    var trace1 = {
+      type: "scatter",
+      mode: "lines+markers",
+      marker:{
+        color:'blue',
+        size:8
+      },
+      name: 'Democrat',
+      x: dem_data.map(row=>row["year"]),
+      y: dem_data.map(row=>row['Poverty Rate']),
+      line: {
+        color: "blue",
+        width: 4,
+        dash:'dashdot'
+      }
+    };
+
+    var trace2 = {
+      type: "scatter",
+      mode: "lines+markers",
+      marker:{
+        color:'red',
+        size:8
+      },
+      name: "Republican",
+      x: rep_data.map(row=>row["year"]),
+      y: rep_data.map(row=>row['Poverty Rate']),
+      line: {
+        color: "red",
+        width:4,
+        dash:'dot'
+      
+      }
+    };
+
+    var combined_data = [trace1,trace2];
+
+    var layout = {
+      title: {
+        text:`Poverty Rates`,
+        font:{
+          family:'Arial',
+          size:30,
+          color:'black'
+        }
+      },
+      xaxis: {
+        autorange: true,
         type: "date"
       },
       yaxis: {
         autorange: true,
-        type: "linear"
+        type: "linear",
+        title:{
+          text:'Porverty Rate',
+          font:{
+            family:'Courier New,monospace',
+            size:18,
+            color:'black'
+          }
+        }
       }
     };
 
-    Plotly.newPlot("plot", data, layout);
+    Plotly.newPlot("plot2", combined_data, layout);
 
-  });
-}
+
+
+
+
+
+
+
+
+    var trace1 = {
+      type: "scatter",
+      mode: "lines+markers",
+      marker:{
+        color:'blue',
+        size:8
+      },
+      name: 'Democrat',
+      x: dem_data.map(row=>row["year"]),
+      y: dem_data.map(row=>row['Unemployment Rate']),
+      line: {
+        color: "blue",
+        width: 4,
+        dash:'dashdot'
+      }
+    };
+
+    var trace2 = {
+      type: "scatter",
+      mode: "lines+markers",
+      marker:{
+        color:'red',
+        size:8
+      },
+      name: 'Republican',
+      x: rep_data.map(row=>row["year"]),
+      y: rep_data.map(row=>row['Unemployment Rate']),
+      line: {
+        color: "red",
+        width:4,
+        dash:'dot'
+      }
+    };
+
+    var combined_data = [trace1,trace2];
+
+    var layout = {
+      title: {
+        text:`Unemployment Rate`,
+        font:{
+          family:'Arial',
+          size:30,
+          color:'black'
+        }
+      },
+      xaxis: {
+        autorange: true,
+        type: "date"
+      },
+      yaxis: {
+        autorange: true,
+        type: "linear",
+        title:{
+          text:'Unemployment Rate',
+          font:{
+            family:'Courier New,monospace',
+            size:18,
+            color:'black'
+          }
+        }
+      }
+    };
+
+    Plotly.newPlot("plot3", combined_data, layout);
+
+
+
+
+
+    var trace1 = {
+      type: "scatter",
+      mode: "lines+markers",
+      marker:{
+        color:'blue',
+        size:8
+      },
+    
+      name: 'Democrat',
+      x: dem_data.map(row=>row["year"]),
+      y: dem_data.map(row=>row["Median Cost of Rent"]),
+      line: {
+        color: "blue",
+        width: 4,
+        dash:'dashdot'
+      
+      }
+    };
+
+    var trace2 = {
+      type: "scatter",
+      mode: "lines+markers",
+      marker:{
+        color:'red',
+        size:8
+      },
+      name: 'Republican',
+      x: rep_data.map(row=>row["year"]),
+      y: rep_data.map(row=>row["Median Cost of Rent"]),
+      line: {
+        color: "red",
+        width:4,
+        dash:'dot'
+      
+      }
+    };
+
+    var combined_data = [trace1,trace2];
+
+    var layout = {
+      title: {
+        text:'Median Cost of Rent',
+        font:{
+          family:'Arial',
+          size:30,
+          color:'black'
+        }
+      },
+      xaxis: {
+        autorange: true,
+        type: "date"
+      },
+      yaxis: {
+        autorange: true,
+        type: "linear",
+        title:{
+          text:'Cost of Rent',
+          font:{
+            family:'Courier New,monospace',
+            size:18,
+            color:'black'
+      }
+        }
+      }
+    };
+
+    Plotly.newPlot("plot4", combined_data, layout);
+
+
+
+
+
+
+
+
+    var trace1 = {
+      type: "scatter",
+      mode: "lines+markers",
+      marker:{
+        color:'blue',
+        size:8
+      },
+      name: 'Democrat',
+      x: dem_data.map(row=>row["year"]),
+      y: dem_data.map(row=>row["Black Poverty Rate"]),
+      line: {
+        color: "blue",
+        width: 4,
+        dash:'dashdot'
+      
+      }
+    };
+
+    var trace2 = {
+      type: "scatter",
+      mode: "lines+markers",
+      marker:{
+        color:'red',
+        size:8
+      },
+      name: 'Republican',
+      x: rep_data.map(row=>row["year"]),
+      y: rep_data.map(row=>row["Black Poverty Rate"]),
+      line: {
+        color: "red",
+        width:4,
+        dash:'dot'
+      
+      }
+    };
+
+    var combined_data = [trace1,trace2];
+
+    var layout = {
+      title: {
+        text:'Black Poverty Rate',
+        font:{
+          family:'Arial',
+          size:30,
+          color:'black'
+        },
+      xaxis: {
+        autorange: true,
+        type: "date"
+      },
+      yaxis: {
+        autorange: true,
+        type: "linear",
+        title:{
+          text:'Poverty Rate',
+          font:{
+            family:'Courier New,monospace',
+            size:18,
+            color:'black'
+          }
+        }
+      }
+      }
+    };
+
+    Plotly.newPlot("plot5", combined_data, layout);
+
+
+
+
+
+
+    var trace1 = {
+      type: "scatter",
+      mode: "lines+markers",
+      marker:{
+        color:'blue',
+        size:8
+      },
+      name: 'Democrat',
+      x: dem_data.map(row=>row["year"]),
+      y: dem_data.map(row=>row["Hispanic Poverty Rate"]),
+      line: {
+        color: "blue",
+        width: 4,
+        dash:'dashdot'
+      }
+    };
+
+    var trace2 = {
+      type: "scatter",
+      mode: "lines+markers",
+      marker:{
+        color:'red',
+        size:8
+      },
+      name: 'Republican',
+      x: rep_data.map(row=>row["year"]),
+      y: rep_data.map(row=>row["Hispanic Poverty Rate"]),
+      line: {
+        color: "red",
+        width:4,
+        dash:'dot'
+      
+      }
+    };
+
+    var combined_data = [trace1,trace2];
+
+    var layout = {
+      title: {
+        text:'Hispanic Poverty Rate',
+        font:{
+          family:'Arial',
+          size:30,
+          color:'black'
+        },
+      xaxis: {
+        autorange: true,
+        type: "date"
+      },
+      yaxis: {
+        autorange: true,
+        type: "linear",
+        title:{
+          text:'Poverty Rate',
+          font:{
+            family:'Courier New,monospace',
+            size:18,
+            color:'black'
+          }
+        }
+      }
+    }
+    };
+
+    Plotly.newPlot("plot6", combined_data, layout);
+
+
+
+
+
+
+
+
+    var trace1 = {
+      type: "scatter",
+      mode: "lines+markers",
+      marker:{
+        color:'blue',
+        size:8
+      },
+      name: 'Democrat',
+      x: dem_data.map(row=>row["year"]),
+      y: dem_data.map(row=>row["White Poverty Rate"]),
+      line: {
+        color: "blue",
+        width: 4,
+        dash:'dashdot'
+      }
+      
+    };
+
+    var trace2 = {
+      type: "scatter",
+      mode: "lines+markers",
+      marker:{
+        color:'red',
+        size:8
+      },
+      name: 'Republican',
+      x: rep_data.map(row=>row["year"]),
+      y: rep_data.map(row=>row["White Poverty Rate"]),
+      line: {
+        color: "red",
+        width:4,
+        dash:'dot'
+      
+      }
+    };
+
+    var combined_data = [trace1,trace2];
+
+    var layout = {
+      title: {
+        text:'White Poverty Rate',
+        font:{
+          family:'Arial',
+          size:30,
+          color:'black'
+        },
+      xaxis: {
+        autorange: true,
+        type: "date"
+      },
+      yaxis: {
+        autorange: true,
+        type: "linear",
+        title:{
+          text:'Poverty Rate',
+          font:{
+            family:'Courier New,monospace',
+            size:18,
+            color:'black'
+          }
+        }
+      }
+      }
+    };
+
+    Plotly.newPlot("plot7", combined_data, layout);
 
 buildPlot();
